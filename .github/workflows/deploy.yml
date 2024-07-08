@@ -24,7 +24,6 @@ jobs:
           server: 68.178.148.82
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: /public_html/Manage/ # Replace with your remote directory
           exclude: |
             **/.git*
             **/.env*
