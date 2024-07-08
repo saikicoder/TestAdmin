@@ -1,0 +1,38 @@
+name: Deploy to GoDaddy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3.8' # Specify your PHP version
+
+      - name: Install dependencies
+        run: composer install --no-dev --optimize-autoloader
+
+      - name: Deploy to FTP server
+        uses: SamKirkland/FTP-Deploy-Action@4.1.0
+        with:
+          server: ftp.amritaent.com
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./public_html # Replace with your local directory
+          server-dir: /public_html/Manage # Replace with your remote directory
+          exclude: |
+            **/.git*
+            **/.env*
+            **/node_modules/**
+
+      - name: Notify deployment success
+        run: echo "Deployment successful!" # Optional: add any notification or logging
