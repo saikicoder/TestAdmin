@@ -28,7 +28,7 @@ jobs:
           exclude: |
             **/.git*
             **/.env*
-            **/node_modules/**
+            **/node_modules/** 
 
-      - name: Notify deployment success
+      - name: Notify deployment success!
         run: echo "Deployment successful!" # Optional: add any notification or logging
