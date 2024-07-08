@@ -24,8 +24,6 @@ jobs:
           server: ftp.amritaent.com
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./Admin/ # Replace with your local directory
-          server-dir: /public_html/Manage/ # Replace with your remote directory
           exclude: |
             **/.git*
             **/.env*
