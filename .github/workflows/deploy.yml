@@ -21,10 +21,10 @@ jobs:
       - name: Deploy to FTP server
         uses: SamKirkland/FTP-Deploy-Action@4.1.0
         with:
-          server: ftp.amritaent.com
+          server: 68.178.148.82
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          port: 21
+          server-dir: /public_html/Manage/ # Replace with your remote directory
           exclude: |
             **/.git*
             **/.env*
