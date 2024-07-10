@@ -107,7 +107,7 @@ include_once("head_nav.php");
                                 <div></div>
                                 <div class="text-end">
                                     
-                                    <a type="button" href="Blog.php" class="btn btn-info"><i class="fa fa-plus me-2"></i>Add Blog</a>
+                                    <a type="button" href="blog.php" class="btn btn-info"><i class="fa fa-plus me-2"></i>Add Blog</a>
                                 </div>
                             </div>
                             <div class="card-body">
