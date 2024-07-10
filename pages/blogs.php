@@ -10,7 +10,7 @@ unset($_SESSION['message_type']);
 
 require_once '../includes/config.php';
 require_once '../classes/User.php';
-require_once '../classes/blog.php';
+require_once '../classes/Blog.php';
 
 $user = new User($pdo);
 
