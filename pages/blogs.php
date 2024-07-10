@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+print_r(1);exit;
 $message = $_SESSION['message'] ?? '';
 $message_type = $_SESSION['message_type'] ?? '';
 
