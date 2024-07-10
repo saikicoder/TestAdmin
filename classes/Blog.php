@@ -65,6 +65,7 @@ class Blog
     // Update a blog post by ID
     public function update($id, $user_id, $heading, $short_description, $long_description, $image)
     {
+        
         $imageName = $this->uploadImage($image);
         if ($imageName) {
             
@@ -87,13 +88,19 @@ class Blog
         }else {
             // If no new image is uploaded, update other fields only
             $query = "UPDATE " . $this->table . " SET user_id = :user_id, heading = :heading, short_description = :short_description, long_description = :long_description, modified_at = CURRENT_TIMESTAMP WHERE id = :id";
-
+            
             $stmt = $this->conn->prepare($query);
             $stmt->bindParam(':user_id', $user_id);
             $stmt->bindParam(':heading', $heading);
             $stmt->bindParam(':short_description', $short_description);
             $stmt->bindParam(':long_description', $long_description);
             $stmt->bindParam(':id', $id);
+            //print_r($stmt);exit;
+            if ($stmt->execute()) {
+                return true;
+            } else {
+                return false;
+            }
             
 
         }

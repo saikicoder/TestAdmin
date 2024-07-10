@@ -111,14 +111,11 @@ include_once("head_nav.php");
             }
         });
     </script>
-
-    <script src="https://cdn.tiny.cloud/1/st1p9gpd8j0hlsglquhsnutyryqqd3ehxwy4exof813omnk0/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
-    <script>
-      tinymce.init({
-        selector: '#mytextarea'
-      });
-    </script>
-
+    
+    <!-- Include CKEditor script -->
+    <script src="../ckeditor/ckeditor.js"></script>
+    
+    
     <script>
         $(document).ready(function() {
             var id = "<?php echo $id; ?>";
@@ -154,7 +151,10 @@ include_once("head_nav.php");
                             </div>
                             <div class="form-group">
                                 <label>Long Description</label>
-                                <textarea id="mytextarea" class="form-control" name="long_description" rows="3"><?php echo escape($blog['long_description'] ?? ''); ?></textarea>  <br><br>                              
+                                <textarea id="editor1" class="form-control" name="long_description" rows="3"><?php echo escape($blog['long_description'] ?? ''); ?></textarea>  <br><br>                              
+    <script>
+            CKEDITOR.replace('editor1');
+    </script>
                             </div>
                             <div class="form-group">
                                 <label for="image">Image</label>
