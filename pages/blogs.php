@@ -7,13 +7,14 @@ $message_type = $_SESSION['message_type'] ?? '';
 // Clear session variables to prevent the message from displaying again on refresh
 unset($_SESSION['message']);
 unset($_SESSION['message_type']);
-print_r(1);exit;
+
 require_once '../includes/config.php';
+
 require_once '../classes/User.php';
 require_once '../classes/blog.php';
 
 $user = new User($pdo);
-
+print_r($user->isLoggedIn());exit;
 if (!$user->isLoggedIn()) {
     
     header('Location: ../index.php');
