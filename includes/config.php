@@ -1,9 +1,9 @@
 <?php
-$host = '127.0.0.1';
-$dbname = 'admin_db';
-$username = 'root';
-$password = '';
-$port = '4306'; // Replace with your MySQL port number if different
+$host = 'localhost';
+$dbname = 'amritaent';
+$username = 'amritaent_admin';
+$password = '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';
+//$port = '4306'; // Replace with your MySQL port number if different
 
 try {
     $pdo = new PDO("mysql:host=$host;port=$port;dbname=$dbname", $username, $password, [
