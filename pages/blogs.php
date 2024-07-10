@@ -9,12 +9,12 @@ unset($_SESSION['message']);
 unset($_SESSION['message_type']);
 
 require_once '../includes/config.php';
-
+print_r(1);exit;
 require_once '../classes/User.php';
 require_once '../classes/blog.php';
 
 $user = new User($pdo);
-print_r($user->isLoggedIn());exit;
+
 if (!$user->isLoggedIn()) {
     
     header('Location: ../index.php');
