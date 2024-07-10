@@ -151,8 +151,8 @@ include_once("head_nav.php");
                                                             </button>
                                                         </td>
                                                         <td>
-                                                            <a href="Blog.php?id=<?php echo html_entity_decode($post['id']); ?>" ><i class="fas fa-edit" style="color: green;font-size: large;margin-right: 4px;"></i> </a>
-                                                            <a href="Blogs.php?delete_id=<?php echo html_entity_decode($post['id']); ?>" ><i class="fas fa-trash-alt" style="color: red;font-size: large"></i> </a>
+                                                            <a href="blog.php?id=<?php echo html_entity_decode($post['id']); ?>" ><i class="fas fa-edit" style="color: green;font-size: large;margin-right: 4px;"></i> </a>
+                                                            <a href="blogs.php?delete_id=<?php echo html_entity_decode($post['id']); ?>" ><i class="fas fa-trash-alt" style="color: red;font-size: large"></i> </a>
                                                         </td>
                                                     </tr>
                                                 <?php endforeach; ?>
