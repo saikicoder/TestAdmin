@@ -178,11 +178,18 @@ class Blog
     }
 
     public function getAllActiveBlogs($offset, $limit) {
+<<<<<<< HEAD
         $query = "SELECT * FROM " . $this->table . " WHERE status = 1 LIMIT :offset, :limit";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
         $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
         //print_r($stmt);exit;
+=======
+        $query = "SELECT * FROM " . $this->table . "WHERE status = 1 LIMIT :offset, :limit";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+        $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+>>>>>>> f4e8c4af0027f957293bc3a7fb3b822204e6d665
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
