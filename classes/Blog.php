@@ -177,6 +177,16 @@ class Blog
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function getAllActiveBlogs($offset, $limit) {
+        $query = "SELECT * FROM " . $this->table . " WHERE status = 1 LIMIT :offset, :limit";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+        $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+        //print_r($stmt);exit;
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function getBlogByHeading($heading) {
         $query = "SELECT * FROM " . $this->table . " WHERE heading = :heading LIMIT 1";
         $stmt = $this->conn->prepare($query);

@@ -11,7 +11,7 @@ $offset = ($page - 1) * $limit;
 $totalBlogs = $blog->countBlogs();
 $totalPages = ceil($totalBlogs / $limit);
 
-$blogs = $blog->getAllBlogs($offset, $limit);
+$blogs = $blog->getAllActiveBlogs($offset, $limit);
 ?>
 
 <!DOCTYPE html>
