@@ -3,4 +3,4 @@ vendor/
 .env
 .DS_Store
 # Ignore a specific file
-includes\config.php
+includes/config.php
