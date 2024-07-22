@@ -147,6 +147,8 @@ class Blog
 
 
     private function uploadImage($image) {
+
+        //print_r($image);exit;
         if ($image['error'] == 0) {
             $extension = pathinfo($image['name'], PATHINFO_EXTENSION);
             $imageName = 'IMG_' . round(microtime(true) * 1000) . '.' . $extension;

@@ -23,6 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $long_description = $_POST['long_description'];
     $user_id = $_SESSION['user_id'];
     $image = $_FILES['image'];
+    //print_r($_FILES);exit;
 
     if(isset($_POST['id'])){
             // Handle form submission
@@ -158,17 +159,34 @@ include_once("head_nav.php");
                             </div>
                             <div class="form-group">
                                 <label for="image">Image</label>
-                                <input type="file" class="form-control-file" id="image" name="image" <?php echo isset($blog) ? '' : 'required'; ?> onchange="previewImage(event)">
-
+                                
+                                <input type="file" class="form-control-file" id="file" name="image" accept="image/*,video/*" <?php echo isset($blog) ? '' : 'required'; ?>>
+                                <!-- Container for previews -->
+                                <div id="previewContainer" style="margin-top: 20px;">
                                 <?php if (isset($blog) && $blog['image']): ?>
                                     <div class="mt-3">
-                                        <img id="image-preview" src="../uploads/<?php echo $blog['image']; ?>" alt="Blog Image" style="max-width: 150px;">
+                                    <?php 
+                                     // Split the string at the dot
+                                     $parts = explode('.', $blog['image']);
+                                     $fileName = $parts [0];
+                                     $fileType = $parts [1];
+                                     $filePath = "../uploads/" . $blog['image'];
+                                    if(in_array($fileType, array('jpg', 'jpeg', 'png', 'gif'))) {
+                                    echo "<img id='image-preview' src='$filePath' alt='$fileName' style='max-width: 150px;'><br>";
+                                    } elseif(in_array($fileType, array('mp4', 'mov', 'avi'))) {
+                                    echo "<video id='video-preview' width='320' height='240' controls>
+                                    <source src='$filePath' type='video/$fileType'>
+                                    Your browser does not support the video tag.
+                                    </video><br>";
+                                    }    ?>
+                                    
                                     </div>
                                 <?php else: ?>
                                     <div class="mt-3">
                                         <img id="image-preview" alt="Image Preview" style="max-width: 150px; display: none;">
                                     </div>
                                 <?php endif; ?>
+                                </div>
                             </div>
 
                             <?php if(isset($_GET['id'])){?><input type="hidden" class="form-control" name="id" maxlength="6" value="<?php echo escape($blog['id'] ?? ''); ?>" required> <?php } ?>
@@ -186,17 +204,37 @@ include_once("head_nav.php");
     
                 </main>
     <script>
-        function previewImage(event) {
-            var reader = new FileReader();
-            reader.onload = function(){
-                
-                var output = document.getElementById('image-preview');
-                output.src = reader.result;
-                output.style.display = 'block';
-            };
-            reader.readAsDataURL(event.target.files[0]);
+document.getElementById('file').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    const previewContainer = document.getElementById('previewContainer');
+    
+    // Clear previous previews
+    previewContainer.innerHTML = '';
+    
+    if (file) {
+        const fileType = file.type;
+        const url = URL.createObjectURL(file);
+
+        if (fileType.startsWith('image/')) {
+            // Create an image element for image files
+            const img = document.createElement('img');
+            img.src = url;
+            img.alt = 'Image Preview';
+            img.style.maxWidth = '150px'; // Adjust as needed
+            img.style.height = '100px';   // Adjust as needed
+            previewContainer.appendChild(img);
+        } else if (fileType.startsWith('video/')) {
+            // Create a video element for video files
+            const video = document.createElement('video');
+            video.src = url;
+            video.controls = true; // Add controls for play/pause
+            video.style.maxWidth = '320px'; // Adjust as needed
+            video.style.height = '240px';   // Adjust as needed
+            previewContainer.appendChild(video);
         }
-    </script>
+    }
+});
+</script>
     
     <?php
 include_once("footer.php");

@@ -4,3 +4,4 @@ vendor/
 .DS_Store
 # Ignore a specific file
 includes/config.php
+/uploads/
