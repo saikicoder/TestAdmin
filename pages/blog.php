@@ -234,6 +234,14 @@ document.getElementById('file').addEventListener('change', function(event) {
         }
     }
 });
+
+$(document).ready(function() {
+            $('#myForm').on('submit', function(event) {
+                // Show the overlay
+                $('#overlay').show();
+                
+            });
+        });
 </script>
     
     <?php
