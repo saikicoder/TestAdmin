@@ -163,13 +163,24 @@ include_once("head_nav.php");
                 $('#updateBtn').show();
             }
         });
+        
+        $(window).on('load', function() {
+            // Hide the overlay and show the main content
+            $('body').removeClass('loading');
+            $('#content').fadeIn();
+        });
+    
     </script>
  
         <div id="layoutSidenav_content">
                 <main>
+                    <!-- Overlay element with spinner -->
+    <div id="overlay" class="overlay">
+        <div class="spinner"></div>
+    </div>
                     
 
-    <div class="container mt-5">
+    <div class="container mt-5" id="content" style="display: none;">
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card">
