@@ -11269,3 +11269,9 @@ body {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+
+/* Hide the overlay initially */
+body.loading .overlay {
+  display: flex;
+}

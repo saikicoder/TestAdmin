@@ -200,6 +200,10 @@ include_once("head_nav.php");
             </div>
         </div>
     </div>
+                                    <!-- Overlay element with spinner -->
+    <div id="overlay" class="overlay">
+        <div class="spinner"></div>
+    </div>
 
     
                 </main>
