@@ -191,7 +191,7 @@ include_once("head_nav.php");
                         <form id="myForm" action="" method="POST" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label for="heading">Heading</label>
-                                <input type="text" class="form-control" name="heading" maxlength="45" value="<?php echo escape($blog['heading'] ?? ''); ?>" required><br><br>
+                                <input type="text" class="form-control" name="heading" maxlength="100" value="<?php echo escape($blog['heading'] ?? ''); ?>" required><br><br>
                                 
                             </div>
                             <div class="form-group">
